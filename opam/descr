@@ -1,0 +1,4 @@
+Library and Executable for Stripe
+Concurrent Library for the Stripe Rest API along with a commandline
+tool for simple usages.
+

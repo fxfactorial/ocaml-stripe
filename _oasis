@@ -1,0 +1,40 @@
+OASISFormat:  0.4
+OCamlVersion: >= 4.02.3
+Name:         stripe
+Version:      0.1
+Maintainers:  Edgar Aroutiounian
+Homepage:     http://hyegar.com
+Synopsis:     Library and Executable for Stripe
+Authors:      Edgar Aroutiounian <edgar.factorial@gmail.com>
+License:      BSD-3-clause
+Plugins:      META (0.4), DevFiles (0.4)
+AlphaFeatures: ocamlbuild_more_args
+Description:
+  Concurrent Library for the Stripe Rest API
+  along with a commandline tool for simple usages.
+
+Executable ostripe
+  Path:src/app
+  BuildTools:ocamlbuild
+  BuildDepends:cmdliner, stripe, yojson
+  install: true
+  MainIs:main.ml
+  CompiledObject: best
+
+Library stripe
+  Path:src/lib
+  BuildTools:ocamlbuild
+  BuildDepends:lwt.ppx, lwt.unix, cohttp.lwt, yojson, uri
+  install: true
+  CompiledObject: best
+  Modules: Stripe
+
+Document stripe_api
+  Title: API reference for maxminddb
+  Type: ocamlbuild (0.4)
+  Authors: Edgar Aroutiounian
+  BuildTools: ocamldoc, ocamlbuild
+  Format: HTML
+  Index: index.html
+  XOCamlbuildPath: .
+  XOCamlbuildLibraries: stripe
