@@ -84,6 +84,12 @@ module Charges = struct
     |> Cohttp_lwt_unix.Client.get ~headers:specialized.authed_headers >>= fun (resp, body) ->
     Cohttp_lwt_body.to_string body >|= Yojson.Basic.from_string
 
+  let list_all handle =
+    let specialized = customize handle in
+    specialized.end_point |> Uri.of_string
+    |> Cohttp_lwt_unix.Client.get ~headers:specialized.authed_headers >>= fun (resp, body) ->
+    Cohttp_lwt_body.to_string body >|= Yojson.Basic.from_string
+
 end
 
 module Refunds = struct
